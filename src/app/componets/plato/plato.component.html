@@ -1,0 +1,48 @@
+<table class="table table-dark">
+    <thead>
+        <tr>
+            <th scope="col">id</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Ingredientes</th>
+            <th scope="col">Precio</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let plato of platos">
+            <td scope="col">{{plato._id}}</td>
+            <td scope="col">{{plato.nombre}}</td>
+            <td scope="col">{{plato.ingredientes}}</td>
+            <td scope="col">{{plato.precio}}</td>
+            <td><button type="button" class="btn btn-success fas fa-edit" (click)="editplato(plato)">Act</button>
+                <button type="button" class="btn btn-danger fas  fa-trash-alt" (click)="deletePlato(plato)">Del</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<div class=" card ">
+    <div class="card-body ">
+        <form (ngSubmit)="guardarPlato (platoform) " #platoform="ngForm">
+
+            <div class="form-group ">
+                <label>id</label>
+                <input type="text " class="form-control " [(ngModel)]="plato._id" name="_id " placeholder="_id " required disabled>
+            </div>
+
+            <div class="form-group ">
+                <label>Nombre</label>
+                <input type="text " class="form-control " [(ngModel)]="plato.nombre" name="nombre " placeholder="nombre " required>
+            </div>
+            <div class="form-group ">
+                <label>Ingredientes</label>
+                <input type="text " class="form-control " [(ngModel)]="plato.ingredientes" name="ingredientes " placeholder="ingredientes ">
+            </div>
+            <div class="form-group ">
+                <label>Precio</label>
+                <input type="text " class="form-control " [(ngModel)]="plato.precio" name="precio " placeholder="precio ">
+            </div>
+
+            <button type="submit " class="btn btn-primary mb-2 ">Guardar</button>
+        </form>
+
+    </div>
+</div>

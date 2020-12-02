@@ -1,0 +1,56 @@
+<table class="table table-dark">
+    <thead>
+        <tr>
+            <th scope="col">id</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Dni</th>
+            <th scope="col">Telefono</th>
+            <th scope="col">email</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let cliente of clientes">
+            <td scope="col">{{cliente._id}}</td>
+            <td scope="col">{{cliente.nombre}}</td>
+            <td scope="col">{{cliente.dni}}</td>
+            <td scope="col">{{cliente.telefono}}</td>
+            <td scope="col">{{cliente.email}}</td>
+            <td><button type="button" class="btn btn-success fas fa-edit" (click)="editCliente(cliente)">Act</button>
+                <button type="button" class="btn btn-danger fas  fa-trash-alt" (click)="deleteCliente(cliente._id)">Del</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<div class=" card ">
+    <div class="card-body  ">
+        <form #clienteForm="ngForm" (ngSubmit)="addcliente(clienteForm)">
+
+            <!--#pacienteForm="ngForm" (ngSubmit)="addPaciente(pacienteForm)-->
+
+            <div class="form-group ">
+                <label>id</label>
+                <input type="text " class="form-control " name="id" #id="ngModel" [(ngModel)]="cliente._id" placeholder="_id " required disabled>
+            </div>
+
+            <div class="form-group ">
+                <label>Nombre</label>
+                <input type="text " class="form-control " [(ngModel)]="cliente.nombre" name="nombre " placeholder="nombre " required>
+            </div>
+            <div class="form-group ">
+                <label>DNI</label>
+                <input type="text " class="form-control " [(ngModel)]="cliente.dni" name="dni " placeholder="dni ">
+            </div>
+            <div class="form-group ">
+                <label>Telefono</label>
+                <input type="text " class="form-control " [(ngModel)]="cliente.telefono" name="telefono " placeholder="telefono ">
+            </div>
+            <div class="form-group ">
+                <label>Email</label>
+                <input type="text " class="form-control " [(ngModel)]="cliente.email" name="email " placeholder="email ">
+            </div>
+            <button class="btn btn-primary mb-2 ">Guardar</button>
+
+        </form>
+
+    </div>
+</div>
